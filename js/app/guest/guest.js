@@ -255,10 +255,10 @@ export const guest = (() => {
         const url = new URL('https://calendar.google.com/calendar/render');
         const data = new URLSearchParams({
             action: 'TEMPLATE',
-            text: 'Trần Tín & Thu Hương',
-            dates: `${formatDate('2026-02-26 10:00')}`,
+            text: 'Ly Ly დ Đức Thành',
+            dates: `${formatDate('2026-11-16 10:00')}`,
             details: 'Trân trọng kính mời Quý vị dành thời gian đến tham dự lễ thành hôn của chúng tôi. Sự hiện diện và lời chúc phúc của Quý vị là niềm vinh hạnh và hạnh phúc lớn lao đối với gia đình chúng tôi.',
-            location: 'Xóm 3, Thọ Tây, Thọ Phong, Quảng Ngãi.',
+            location: 'Đội 8, Nghĩa Thương, Tư Nghĩa, Quảng Ngãi.',
             ctz: config.get('tz'),
         });
 
