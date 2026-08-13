@@ -8,10 +8,10 @@ export const audio = (() => {
     const statePause = '<i class="fa-solid fa-circle-play"></i>';
 
     /**
-     * @param {boolean} [playOnOpen=true]
+     * @param {boolean} [playOnOpen] default from the 'data-audio-autoplay' attribute.
      * @returns {Promise<void>}
      */
-    const load = async (playOnOpen = true) => {
+    const load = async (playOnOpen = document.body.getAttribute('data-audio-autoplay') !== 'false') => {
 
         const url = document.body.getAttribute('data-audio');
         if (!url) {
@@ -72,9 +72,7 @@ export const audio = (() => {
         document.addEventListener('undangan.open', () => {
             music.classList.remove('d-none');
 
-            if (playOnOpen) {
-                play();
-            }
+            playOnOpen ? play() : pause();
         });
 
         music.addEventListener('offline', pause);

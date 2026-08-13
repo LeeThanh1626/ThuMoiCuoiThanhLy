@@ -2,6 +2,7 @@ import { video } from './video.js';
 import { image } from './image.js';
 import { audio } from './audio.js';
 import { progress } from './progress.js';
+import { autoscroll } from './autoscroll.js';
 import { util } from '../../common/util.js';
 import { bs } from '../../libs/bootstrap.js';
 import { loader } from '../../libs/loader.js';
@@ -322,6 +323,7 @@ export const guest = (() => {
         offline.init();
         comment.init();
         progress.init();
+        autoscroll.init();
 
         config = storage('config');
         information = storage('information');
