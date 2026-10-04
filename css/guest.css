@@ -381,17 +381,3 @@ html[data-bs-theme="dark"] .wish-card-name {
   opacity: 0.55;
   border-style: dashed;
 }
-
-/* Trái tim giữa tên cô dâu chú rể: dùng màu hồng đất của thiệp thay cho emoji */
-.name-heart {
-  font-size: 0.5em;
-  color: #b76e79;
-  vertical-align: middle;
-  margin: 0 0.15em;
-}
-
-.couple-heart {
-  font-size: 3rem;
-  color: #b76e79;
-  opacity: 0.85;
-}
