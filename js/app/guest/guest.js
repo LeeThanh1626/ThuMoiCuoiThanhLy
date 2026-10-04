@@ -70,7 +70,13 @@ export const guest = (() => {
         let name = null;
 
         if (raw.length > 1 && raw[1].length >= 1) {
-            name = window.decodeURIComponent(raw[1]);
+            // Bỏ tham số theo dõi mà Zalo/Facebook tự gắn vào cuối link (&utm_source=zalo...).
+            const value = raw[1].replace(/&(utm_|fbclid|gclid|zarsrc)[^]*$/i, '');
+            try {
+                name = window.decodeURIComponent(value);
+            } catch {
+                name = value;
+            }
         }
 
         if (name) {

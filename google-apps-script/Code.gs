@@ -20,6 +20,17 @@ function getSheet_() {
   return sheet;
 }
 
+// Chạy một lần trong trình soạn thảo Apps Script để tạo sheet "LoiChuc" với tiêu đề và định dạng cột.
+function setup() {
+  const sheet = getSheet_();
+  sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS])
+    .setFontWeight('bold').setBackground('#b71c1c').setFontColor('#ffffff');
+  sheet.setFrozenRows(1);
+  sheet.getRange('A2:A').setNumberFormat('dd/MM/yyyy HH:mm');
+  sheet.getRange('C2:C').setWrap(true);
+  [140, 160, 420, 70, 50, 160].forEach((w, i) => sheet.setColumnWidth(i + 1, w));
+}
+
 function json_(data) {
   return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
 }

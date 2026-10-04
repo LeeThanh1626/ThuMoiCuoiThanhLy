@@ -16,7 +16,8 @@
     let linkName = '';
     if (raw.length > 1 && raw[1].length >= 1) {
         try {
-            linkName = window.decodeURIComponent(raw[1]).trim();
+            // Bỏ tham số theo dõi mà Zalo/Facebook tự gắn vào cuối link (&utm_source=zalo...).
+            linkName = window.decodeURIComponent(raw[1].replace(/&(utm_|fbclid|gclid|zarsrc)[^]*$/i, '')).trim();
         } catch {
             linkName = '';
         }
