@@ -71,7 +71,8 @@ export const guest = (() => {
 
         if (raw.length > 1 && raw[1].length >= 1) {
             // Bỏ tham số theo dõi mà Zalo/Facebook tự gắn vào cuối link (&utm_source=zalo...).
-            const value = raw[1].replace(/&(utm_|fbclid|gclid|zarsrc)[^]*$/i, '');
+            // Facebook mã hoá dấu cách thành "+", đổi lại trước khi giải mã.
+            const value = raw[1].replace(/&(utm_|fbclid|gclid|zarsrc)[^]*$/i, '').replace(/\+/g, ' ');
             try {
                 name = window.decodeURIComponent(value);
             } catch {
@@ -268,9 +269,9 @@ export const guest = (() => {
         const url = new URL('https://calendar.google.com/calendar/render');
         const data = new URLSearchParams({
             action: 'TEMPLATE',
-            text: 'Ly Ly ღ Đức Thành',
+            text: 'Đức Thành ❤️ Ly Ly',
             dates: `${formatDate('2026-11-16 10:00')}`,
-            details: 'Trân trọng kính mời Quý vị dành thời gian đến tham dự lễ thành hôn của chúng tôi. Sự hiện diện và lời chúc phúc của Quý vị là niềm vinh hạnh và hạnh phúc lớn lao đối với gia đình chúng tôi.',
+            details: 'Thứ hai, ngày 16 tháng 11 năm 2026 (nhằm ngày 08 tháng 10 năm Bính Ngọ). Trân trọng kính mời Quý vị dành thời gian đến tham dự lễ thành hôn của chúng tôi. Sự hiện diện và lời chúc phúc của Quý vị là niềm vinh hạnh và hạnh phúc lớn lao đối với gia đình chúng tôi.',
             location: 'Đội 8, Nghĩa Thương, Tư Nghĩa, Quảng Ngãi.',
             ctz: config.get('tz'),
         });

@@ -251,6 +251,13 @@ html[data-bs-theme="dark"] .guest-name-box {
   margin-bottom: 0.8vh !important;
 }
 
+/* Màn hình thấp: ẩn các dòng hoa trang trí để tên khách và ngày âm vẫn vừa 1 màn hình */
+@media (max-height: 960px) {
+  #welcome .d-flex.flex-column > div:not(.guest-name-box) {
+    display: none;
+  }
+}
+
 #welcome .guest-name-box {
   padding: 1vh 1.75rem;
   margin-top: 0 !important;
@@ -373,4 +380,18 @@ html[data-bs-theme="dark"] .wish-card-name {
 .wish-card-hidden {
   opacity: 0.55;
   border-style: dashed;
+}
+
+/* Trái tim giữa tên cô dâu chú rể: dùng màu hồng đất của thiệp thay cho emoji */
+.name-heart {
+  font-size: 0.5em;
+  color: #b76e79;
+  vertical-align: middle;
+  margin: 0 0.15em;
+}
+
+.couple-heart {
+  font-size: 3rem;
+  color: #b76e79;
+  opacity: 0.85;
 }

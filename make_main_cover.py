@@ -9,7 +9,7 @@ TOP_PHOTO = "2W4A4516.jpg"
 BOTTOM_PHOTO = "main.jpg"
 OUT = "main.webp"
 W, H = 1600, 2400
-SCRIPT_FONT = "C:/Windows/Fonts/ITCEDSCR.TTF"
+SCRIPT_FONT = "tools/fonts/GreatVibes-Regular.ttf"
 SERIF_FONT = "C:/Windows/Fonts/GARA.TTF"
 TEXT_COLOR = (58, 56, 58)
 
@@ -67,8 +67,8 @@ def main():
     page = Image.fromarray(np.clip(canvas, 0, 255).round().astype(np.uint8))
 
     # Chữ "Thanh ♡ Ly"
-    font = ImageFont.truetype(SCRIPT_FONT, 300)
-    left, right = "Thanh", "Ly"
+    font = ImageFont.truetype(SCRIPT_FONT, 260)
+    left, right = "Thành", "Ly"
     heart_w, gap = 140, 55
     lw = font.getlength(left)
     rw = font.getlength(right)
