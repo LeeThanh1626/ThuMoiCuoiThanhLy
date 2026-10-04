@@ -281,3 +281,96 @@ html[data-bs-theme="dark"] .guest-name-box {
   aspect-ratio: 3 / 2;
   object-fit: cover;
 }
+
+/* Lời chúc khách đã gửi */
+.wish-list-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2rem 0 1rem;
+  color: #b76e79;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.wish-list-title::before,
+.wish-list-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e7c6cc, transparent);
+}
+
+.wish-card {
+  position: relative;
+  margin: 0 0 1rem;
+  padding: 2.25rem 1.5rem 1.25rem;
+  background: var(--bs-body-bg);
+  border: 1px solid #f0dde1;
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px -18px rgba(128, 0, 32, 0.35);
+  text-align: left;
+}
+
+.wish-card::before {
+  content: "\201C";
+  position: absolute;
+  top: -0.35rem;
+  left: 1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: #b76e79;
+  opacity: 0.35;
+}
+
+.wish-card-message {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.8;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.wish-card-name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #ecd3d8;
+  font-family: "Great Vibes", cursive;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: #800020;
+}
+
+.wish-card-name i {
+  font-size: 0.7rem;
+  color: #b76e79;
+}
+
+html[data-bs-theme="dark"] .wish-card {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-bs-theme="dark"] .wish-card-name {
+  color: #e8a2b5;
+}
+
+/* Chế độ admin (?to=admintl): thông tin thêm và lời chúc đã ẩn */
+.wish-card-meta {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #9a8a8d;
+  text-align: right;
+}
+
+.wish-card-hidden {
+  opacity: 0.55;
+  border-style: dashed;
+}

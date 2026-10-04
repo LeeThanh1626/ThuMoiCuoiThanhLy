@@ -35,18 +35,31 @@ function json_(data) {
   return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
 }
 
-function doGet() {
+// Link ?to=admintl xem được tất cả lời chúc, kể cả lời chúc đã ẩn.
+const ADMIN_NAME = 'admintl';
+
+// ?to=<tên trong link>: chỉ trả về lời chúc khách đó đã gửi (khớp cột ten_link, không phân biệt hoa thường).
+// Không có tên thì không trả về lời chúc nào.
+function doGet(e) {
+  const to = String((e && e.parameter && e.parameter.to) || '').trim().toLowerCase();
+  if (!to) {
+    return json_([]);
+  }
+  const admin = to === ADMIN_NAME;
   const rows = getSheet_().getDataRange().getValues().slice(1);
   const wishes = rows
-    .filter((r) => r[2] && r[4] !== true && String(r[4]).toUpperCase() !== 'TRUE')
+    .filter((r) => r[2])
     .map((r) => ({
       time: new Date(r[0]).getTime() || 0,
       ten: String(r[1]),
       loi_chuc: String(r[2]),
       order: r[3] === '' ? Infinity : Number(r[3]),
+      an: r[4] === true || String(r[4]).toUpperCase() === 'TRUE',
+      ten_link: String(r[5]).trim(),
     }))
+    .filter((w) => admin || (!w.an && w.ten_link.toLowerCase() === to))
     .sort((a, b) => (a.order - b.order) || (b.time - a.time))
-    .map(({ ten, loi_chuc }) => ({ ten, loi_chuc }));
+    .map(({ time, ten, loi_chuc, an, ten_link }) => (admin ? { ten, loi_chuc, an, ten_link, time } : { ten, loi_chuc }));
   return json_(wishes);
 }
 
