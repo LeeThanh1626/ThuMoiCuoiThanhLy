@@ -4,6 +4,7 @@ import numpy as np
 from PIL import Image, ImageOps, ImageDraw, ImageFont, ImageFilter
 
 IMG = "assets/img"
+SRC = "assets/img/unused"  # ảnh gốc không dùng trực tiếp trên trang
 TOP_PHOTO = "2W4A4516.jpg"
 BOTTOM_PHOTO = "main.jpg"
 OUT = "main.webp"
@@ -19,7 +20,7 @@ def smooth(a, b, x):
 
 
 def load(name, max_side=None):
-    im = Image.open(os.path.join(IMG, name))
+    im = Image.open(os.path.join(SRC, name))
     return ImageOps.exif_transpose(im).convert("RGB")
 
 
