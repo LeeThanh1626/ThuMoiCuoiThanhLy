@@ -4,3 +4,5 @@ node_modules
 package-lock.json
 dist
 public
+# Ảnh không dùng trên trang
+assets/img/unused/
