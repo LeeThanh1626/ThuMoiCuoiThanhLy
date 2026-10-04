@@ -151,3 +151,133 @@ p {
 small {
  font-family: 'Alex Brush';
 }
+
+#wishes,
+#wishes .form-label,
+#wishes .form-control,
+#wishes .btn {
+  font-family: "Alex Brush" !important;
+}
+
+/* Desktop: khung giới thiệu bên trái */
+.desktop-shade {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.1) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.desktop-card {
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(620px, 88%);
+  padding: 1.5rem 1.5rem !important;
+  border-radius: 2rem;
+  background-color: rgba(255, 252, 247, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(183, 110, 121, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  color: #3a2a2a;
+}
+
+html[data-bs-theme="dark"] .desktop-card {
+  background-color: rgba(20, 16, 16, 0.75);
+  color: #f3ece6;
+}
+
+.desktop-eyebrow {
+  font-size: 0.8rem !important;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.desktop-divider {
+  width: 90px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #b76e79, transparent);
+}
+
+.desktop-guest {
+  font-family: "Great Vibes", cursive !important;
+  font-size: 1.9rem !important;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Tên khách ở màn hình mở thiệp */
+.guest-name-box {
+  display: inline-block;
+  min-width: 220px;
+  padding: 0.6rem 1.75rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(183, 110, 121, 0.3);
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+html[data-bs-theme="dark"] .guest-name-box {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.guest-name-text {
+  font-family: "Great Vibes", cursive !important;
+  font-size: 1.9rem !important;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Màn hình mở thiệp: co theo chiều cao để vừa 1 màn hình, không cần cuộn */
+#welcome .img-center-crop {
+  /* Khung vòm theo tỉ lệ ảnh dọc: đỉnh là nửa hình tròn (bán kính = nửa chiều rộng), đáy bo nhẹ */
+  height: min(34rem, 52vh);
+  width: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 50% 50% 1.5rem 1.5rem / 33.3% 33.3% 1.5rem 1.5rem !important;
+  margin-bottom: 2vh !important;
+}
+
+#welcome h2 {
+  font-size: clamp(1.5rem, 5vh, 2.25rem) !important;
+  margin-bottom: 2vh !important;
+}
+
+#welcome .d-flex.flex-column > div:not(.guest-name-box) {
+  font-size: clamp(0.7rem, 1.8vh, 1rem) !important;
+  margin-bottom: 0.8vh !important;
+}
+
+#welcome .guest-name-box {
+  padding: 1vh 1.75rem;
+  margin-top: 0 !important;
+  margin-bottom: 2vh !important;
+}
+
+#welcome .guest-name-text {
+  font-size: clamp(1.3rem, 4vh, 1.9rem) !important;
+}
+
+#welcome .guest-name-box .mb-2 {
+  margin-bottom: 0.5vh !important;
+}
+
+#welcome .btn {
+  margin-top: 1vh !important;
+}
+
+/* Album: cố định tỉ lệ khung để không bị giật chiều cao khi chuyển ảnh */
+#carousel-image-one .carousel-item img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+#carousel-image-two .carousel-item img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}

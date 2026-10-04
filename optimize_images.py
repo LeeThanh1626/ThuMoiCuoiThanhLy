@@ -10,8 +10,9 @@ SRC_DIR = "assets/img"
 # Background images that are blurred/at low opacity in HTML
 BG_IMAGES = {
     "bg.jpg", "bg2.jpg",  # home section bg (25% opacity) + profile circle (kept reasonable)
-    "ab1.jpg", "ab2.jpg", "ab3.jpg",  # desktop slides (60% opacity)
 }
+# Desktop slides fill the whole left panel at full opacity - need high resolution
+DESKTOP_SLIDES = {"ab1.jpg", "ab2.jpg", "ab3.jpg"}
 # Wave separators and gallery/hero are foreground - keep higher quality
 # Default everything else to foreground
 
@@ -39,7 +40,9 @@ for fname in sorted(os.listdir(SRC_DIR)):
     if not fname.lower().endswith((".jpg", ".jpeg")):
         continue
 
-    if fname in BG_IMAGES:
+    if fname in DESKTOP_SLIDES:
+        max_dim, quality, kind = 2405, 72, "dsk"
+    elif fname in BG_IMAGES:
         max_dim, quality, kind = 900, 65, "bg "
     else:
         max_dim, quality, kind = 1100, 75, "fg "

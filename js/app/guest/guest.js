@@ -76,12 +76,18 @@ export const guest = (() => {
         if (name) {
             const guestName = document.getElementById('guest-name');
             const div = document.createElement('div');
-            div.classList.add('m-2');
+            div.classList.add('mb-2');
 
-            const template = `<small class="mt-0 mb-1 mx-0 p-0">${util.escapeHtml(guestName?.getAttribute('data-message'))}</small><p class="m-0 p-0" style="font-size: 1.25rem">${util.escapeHtml(name)}</p>`;
+            const template = `<p class="desktop-eyebrow m-0">${util.escapeHtml(guestName?.getAttribute('data-message'))}</p><p class="guest-name-text m-0 mt-1">${util.escapeHtml(name)}</p>`;
             util.safeInnerHTML(div, template);
 
             guestName?.appendChild(div);
+
+            const desktopGuest = document.getElementById('desktop-guest');
+            if (desktopGuest) {
+                desktopGuest.textContent = name;
+                desktopGuest.classList.remove('d-none');
+            }
         }
 
         const form = document.getElementById('form-name');
@@ -256,7 +262,7 @@ export const guest = (() => {
         const url = new URL('https://calendar.google.com/calendar/render');
         const data = new URLSearchParams({
             action: 'TEMPLATE',
-            text: 'Ly Ly დ Đức Thành',
+            text: 'Ly Ly ღ Đức Thành',
             dates: `${formatDate('2026-11-16 10:00')}`,
             details: 'Trân trọng kính mời Quý vị dành thời gian đến tham dự lễ thành hôn của chúng tôi. Sự hiện diện và lời chúc phúc của Quý vị là niềm vinh hạnh và hạnh phúc lớn lao đối với gia đình chúng tôi.',
             location: 'Đội 8, Nghĩa Thương, Tư Nghĩa, Quảng Ngãi.',
