@@ -115,7 +115,7 @@
       integrity="sha256-4rTIfo5GQTi/7UJqoyUJQKzxW8VN/YBH31+Cy+vTZj4="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/guest.css?v=20261005" />
+    <link rel="stylesheet" href="./css/guest.css?v=20261005b" />
 
     <!-- Dependencies JS -->
     <script
@@ -340,74 +340,60 @@
             </div>
           </section>
 
-          <!-- Wave Separator -->
-          <div class="svg-wrapper">
-            <img
-              src="./assets/images/placeholder.webp"
-              style="
-                width: 100%;
-                height: auto;
-                aspect-ratio: 2000 / 1400;
-                display: flex;
-              "
-              data-src="./assets/img/pic-ngang.webp?v=1"
-              alt="bg"
-              onclick="undangan.guest.modal(this)"
-            />
-          </div>
-
           <!-- Bride -->
           <section class="bg-white-black text-center" id="bride">
             <h2 class="font-esthetic py-4 m-0" style="font-size: 2rem">
               Lễ thành hôn
             </h2>
 
-            <div class="overflow-x-hidden pb-4 px-2">
-              <div class="d-flex align-items-start justify-content-center">
-                <div
-                  data-aos="fade-right"
-                  data-aos-duration="2000"
-                  class="pb-1 aos-init"
-                  style="flex: 1 1 0; min-width: 0"
-                >
-                  <h2
-                    class="font-esthetic m-0 text-do-do"
-                    style="font-size: 1.4rem; line-height: 1.3; white-space: nowrap"
-                  >
-                    Lê Đức Thành
-                  </h2>
-                  <p class="mb-2" style="font-size: 0.85rem">Quý nam</p>
-                  <p class="mb-0" style="font-size: 0.8rem">
-                    Ông: Lê Quả
-                  </p>
-                  <p class="mb-0" style="font-size: 0.8rem">
-                    Bà: Đinh Thị Kim Cúc
-                  </p>
+            <div class="couple overflow-x-hidden pb-4">
+              <div class="couple-row align-items-center">
+                <div class="couple-col" data-aos="fade-right" data-aos-duration="2000">
+                  <p class="couple-label">Chú rể</p>
+                  <div class="couple-arch">
+                    <img
+                      src="./assets/images/placeholder.webp"
+                      data-src="./assets/img/groom.webp?v=20261005"
+                      style="object-position: center 30%"
+                      alt="chú rể"
+                      class="cursor-pointer"
+                      onclick="undangan.guest.modal(this)"
+                    />
+                  </div>
                 </div>
-
-                <div class="px-1" style="flex: 0 0 auto; padding-top: 0.6rem">
-                  <svg viewBox="0 0 24 24" aria-hidden="true" style="display: inline-block; width: 28px; height: 28px; fill: #b76e79; opacity: 0.85"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <div class="couple-divider" aria-hidden="true">
+                  <span></span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                  <span></span>
                 </div>
+                <div class="couple-col" data-aos="fade-left" data-aos-duration="2000">
+                  <p class="couple-label">Cô dâu</p>
+                  <div class="couple-arch">
+                    <img
+                      src="./assets/images/placeholder.webp"
+                      data-src="./assets/img/bride.webp?v=20261005"
+                      style="object-position: center 30%"
+                      alt="cô dâu"
+                      class="cursor-pointer"
+                      onclick="undangan.guest.modal(this)"
+                    />
+                  </div>
+                </div>
+              </div>
 
-                <div
-                  data-aos="fade-left"
-                  data-aos-duration="2000"
-                  class="pb-1 aos-init"
-                  style="flex: 1 1 0; min-width: 0"
-                >
-                  <h2
-                    class="font-esthetic m-0 text-do-do"
-                    style="font-size: 1.4rem; line-height: 1.3; white-space: nowrap"
-                  >
-                    Huỳnh Thị Ly Ly
-                  </h2>
-                  <p class="mb-2" style="font-size: 0.85rem">Quý nữ</p>
-                  <p class="mb-0" style="font-size: 0.8rem">
-                    Ông: Huỳnh Chức
-                  </p>
-                  <p class="mb-0" style="font-size: 0.8rem">
-                    Bà: Nguyễn Thị Xuân
-                  </p>
+              <div class="couple-row">
+                <div class="couple-col" data-aos="fade-right" data-aos-duration="2000">
+                  <h2 class="font-esthetic text-do-do couple-name">Lê Đức Thành</h2>
+                  <p class="couple-role">Quý nam</p>
+                  <p class="mb-0 couple-parent">Ông: Lê Quả</p>
+                  <p class="mb-0 couple-parent">Bà: Đinh Thị Kim Cúc</p>
+                </div>
+                <div class="couple-divider" aria-hidden="true"></div>
+                <div class="couple-col" data-aos="fade-left" data-aos-duration="2000">
+                  <h2 class="font-esthetic text-do-do couple-name">Huỳnh Thị Ly Ly</h2>
+                  <p class="couple-role">Quý nữ</p>
+                  <p class="mb-0 couple-parent">Ông: Huỳnh Chức</p>
+                  <p class="mb-0 couple-parent">Bà: Nguyễn Thị Xuân</p>
                 </div>
               </div>
             </div>
