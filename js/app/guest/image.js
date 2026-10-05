@@ -49,13 +49,19 @@ export const image = (() => {
      * @returns {void}
      */
     const getByFetch = (el) => {
+        const url = el.getAttribute('data-src');
+
+        // In-app browsers (Messenger, Zalo, ...) often fail fetch/Cache Storage.
+        // Fall back to a plain <img> load, and never block the whole page on one image.
+        const fallback = (err) => {
+            console.warn(err);
+            return appendImage(el, url).catch(() => progress.complete('image', true));
+        };
+
         urlCache.push({
-            url: el.getAttribute('data-src'),
-            res: (url) => appendImage(el, url),
-            rej: (err) => {
-                console.error(err);
-                progress.invalid('image');
-            },
+            url,
+            res: (blobUrl) => appendImage(el, blobUrl).catch(fallback),
+            rej: fallback,
         });
     };
 
@@ -64,7 +70,7 @@ export const image = (() => {
      * @returns {void}
      */
     const getByDefault = (el) => {
-        el.onerror = () => progress.invalid('image');
+        el.onerror = () => progress.complete('image', true);
         el.onload = () => {
             el.width = el.naturalWidth;
             el.height = el.naturalHeight;
@@ -74,7 +80,7 @@ export const image = (() => {
         if (el.complete && el.naturalWidth !== 0 && el.naturalHeight !== 0) {
             progress.complete('image');
         } else if (el.complete) {
-            progress.invalid('image');
+            progress.complete('image', true);
         }
     };
 
