@@ -21,7 +21,7 @@ def main():
     fg = cover.resize((round(cover.width * H / cover.height), H), Image.LANCZOS)
     bg.paste(fg, ((W - fg.width) // 2, 0))
 
-    bg.save(OUT, "JPEG", quality=88, optimize=True, progressive=True)
+    bg.save(OUT, "JPEG", quality=85, optimize=True, progressive=False)
     print(OUT, bg.size, os.path.getsize(OUT) // 1024, "KB")
 
 
