@@ -1,6 +1,5 @@
 import { progress } from './progress.js';
 import { util } from '../../common/util.js';
-import { cache } from '../../connection/cache.js';
 
 export const audio = (() => {
 
@@ -25,7 +24,9 @@ export const audio = (() => {
         let audioEl = null;
 
         try {
-            audioEl = new Audio(await cache('audio').withForceCache().get(url, progress.getAbort()));
+            // Stream directly instead of downloading the whole file before the page opens.
+            audioEl = new Audio(url);
+            audioEl.preload = 'auto';
             audioEl.loop = true;
             audioEl.muted = false;
             audioEl.autoplay = false;
