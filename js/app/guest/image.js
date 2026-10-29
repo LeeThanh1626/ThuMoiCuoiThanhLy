@@ -19,6 +19,24 @@ export const image = (() => {
     const urlCache = [];
 
     /**
+     * Only these images block the loading screen; the rest load in background.
+     * @param {HTMLImageElement} el
+     * @returns {boolean}
+     */
+    const isTracked = (el) => el.hasAttribute('fetchpriority') || !el.hasAttribute('data-src');
+
+    /**
+     * @param {HTMLImageElement} el
+     * @param {boolean} [error=false]
+     * @returns {void}
+     */
+    const done = (el, error = false) => {
+        if (isTracked(el)) {
+            progress.complete('image', error);
+        }
+    };
+
+    /**
      * @param {string} src 
      * @returns {Promise<HTMLImageElement>}
      */
@@ -41,7 +59,7 @@ export const image = (() => {
         el.src = img.src;
         img.remove();
 
-        progress.complete('image');
+        done(el);
     });
 
     /**
@@ -55,7 +73,7 @@ export const image = (() => {
         // Fall back to a plain <img> load, and never block the whole page on one image.
         const fallback = (err) => {
             console.warn(err);
-            return appendImage(el, url).catch(() => progress.complete('image', true));
+            return appendImage(el, url).catch(() => done(el, true));
         };
 
         urlCache.push({
@@ -106,7 +124,8 @@ export const image = (() => {
         };
 
         await runGroup((el) => el.hasAttribute('fetchpriority'));
-        await runGroup((el) => !el.hasAttribute('fetchpriority'));
+        // Not awaited: the rest load in background after the page opens.
+        runGroup((el) => !el.hasAttribute('fetchpriority'));
     };
 
     /**
@@ -123,7 +142,7 @@ export const image = (() => {
     const init = () => {
         c = cache('image').withForceCache();
         images = document.querySelectorAll('img');
-        images.forEach(progress.add);
+        images.forEach((el) => isTracked(el) && progress.add());
 
         return {
             load,
